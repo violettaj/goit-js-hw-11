@@ -79,10 +79,12 @@ async function getImages(input) {
         lightbox.refresh();
       }
       
-      load.addEventListener("click", handleClick);
+     
 
-function handleClick() {
-  const search = formInput.value
-  page += 1;
-  getImages(search);
-}
+      load.addEventListener('click', () => {
+        page++;
+        
+      })
+      
+
+

@@ -1,2 +1,22 @@
-@import './common';
-@import './example';
+.gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px; 
+}
+  
+ 
+.photo-card {
+    border: 1px solid black;
+    padding-bottom: 10px;}
+header{
+    background-color: blue;
+    height: 50px;
+}
+.search-form {
+text-align: center;
+padding:10px;
+}
+
