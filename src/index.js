@@ -1,4 +1,5 @@
 import axios from "axios";
+import Notiflix from 'notiflix';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
@@ -8,6 +9,8 @@ const searchForm = document.querySelector("#search-form")
 const gallery = document.querySelector(".gallery");
 const load = document.querySelector(".load-more");
 let page = 1;
+let limitPage = 40;
+ 
 searchForm.addEventListener("submit", handleSubmit);
 
 
@@ -77,14 +80,15 @@ async function getImages(input) {
         gallery.insertAdjacentHTML("beforeend", markup)
         let lightbox = new SimpleLightbox(".gallery a")
         lightbox.refresh();
-      }
-      
-     
+      };
 
+      const endOfLoad = () => {
+        Notiflix.Notify.failure(
+          "We're sorry, but you've reached the end of search results."
+        );
+        load.style.display = 'none';
+      };
       load.addEventListener('click', () => {
-        page++;
-        
-      })
-      
-
-
+        page += 1;
+        getImages(formInput.value);
+      });
